@@ -10,15 +10,15 @@ import UIKit
 
 class BlurActionSheet: UIView, UITableViewDataSource, UITableViewDelegate {
 
-    let actionSheetCellHeight:CGFloat = 44.0
+    private let actionSheetCellHeight:CGFloat = 44.0
     
-    var showSet:NSMutableSet = NSMutableSet()
-    var titles:[String]?
-    var containerView:UIView?
-    var handler:((index:Int) -> Void)?
+    private var showSet:NSMutableSet = NSMutableSet()
+    private var titles:[String]?
+    private var containerView:UIView?
+    private var handler:((index:Int) -> Void)?
     
-    var tableView:UITableView!
-    var backView:UIView!
+    private var tableView:UITableView!
+    private var backView:UIView!
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -41,7 +41,7 @@ class BlurActionSheet: UIView, UITableViewDataSource, UITableViewDelegate {
         addSubview(tableView)
     }
 
-    required init(coder aDecoder: NSCoder) {
+    required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
 
@@ -51,7 +51,7 @@ class BlurActionSheet: UIView, UITableViewDataSource, UITableViewDelegate {
     }
     
     class func showWithTitles(titles:[String], view:UIView?, handler: ((index:Int) -> Void)){
-        var actionSheet = BlurActionSheet(frame: UIScreen.mainScreen().bounds)
+        let actionSheet = BlurActionSheet(frame: UIScreen.mainScreen().bounds)
         actionSheet.titles = titles
         actionSheet.containerView = view
         actionSheet.handler = handler
@@ -77,15 +77,14 @@ class BlurActionSheet: UIView, UITableViewDataSource, UITableViewDelegate {
     private func hide(){
         
         var index = 0
-        var count:CGFloat = CGFloat(tableView.visibleCells().count)
-        var minOffset = self.frame.size.width * 0.4 / count
+        let count:CGFloat = CGFloat(tableView.visibleCells.count)
+        let minOffset = self.frame.size.width * 0.4 / count
         let cellWidth = self.frame.size.width
-        for visibleCell in tableView.visibleCells(){
+        for visibleCell in tableView.visibleCells{
             if let cell = visibleCell as? BlurActionSheetCell {
                 index = index + 1
                 let underLineWidth: CGFloat = (count - CGFloat(index)) * minOffset
                 let height = tableView.frame.size.height
-                var index =  tableView .indexPathForCell(cell)
                 
                 UIView.animateWithDuration(0.5, delay: 0.0, options: UIViewAnimationOptions.CurveEaseOut, animations: { () -> Void in
                     cell.underLineView.frame = CGRectMake((cellWidth-underLineWidth)/2, 0, underLineWidth, 1)
@@ -105,7 +104,7 @@ class BlurActionSheet: UIView, UITableViewDataSource, UITableViewDelegate {
         
     }
     
-    override func touchesBegan(touches: Set<NSObject>, withEvent event: UIEvent) {
+    override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
         hide()
     }
     

@@ -10,7 +10,7 @@ import UIKit
 
 class BlurActionSheetCell: UITableViewCell {
 
-    let underLineColor = UIColor(white: 0.5, alpha: 0.7)
+    private let underLineColor = UIColor(white: 0.5, alpha: 0.7)
     
     var underLineView:UIView!
     
@@ -31,7 +31,7 @@ class BlurActionSheetCell: UITableViewCell {
         selectedBackgroundView = UIView()
     }
 
-    required init(coder aDecoder: NSCoder) {
+    required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
 

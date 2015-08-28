@@ -17,7 +17,7 @@ class ViewController: UIViewController {
         
         BlurActionSheet.showWithTitles(titles, handler: { (index) -> Void in
             
-            println("selected at \(index)")
+            print("selected at \(index)")
         })
         
     }
