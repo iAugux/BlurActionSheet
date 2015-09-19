@@ -8,7 +8,7 @@
 
 import UIKit
 
-class BlurActionSheet: UIView, UITableViewDataSource, UITableViewDelegate {
+class BlurActionSheet: UIView, UITableViewDataSource {
 
     private let actionSheetCellHeight:CGFloat = 44.0
     
@@ -157,6 +157,10 @@ class BlurActionSheet: UIView, UITableViewDataSource, UITableViewDelegate {
         return cell!
     }
     
+}
+
+extension BlurActionSheet: UITableViewDelegate{
+    
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         tableView.deselectRowAtIndexPath(indexPath, animated: true)
         
@@ -178,7 +182,7 @@ class BlurActionSheet: UIView, UITableViewDataSource, UITableViewDelegate {
                 cell.layer.transform = CATransform3DIdentity
                 cell.alpha = 1
                 
-            }, completion: nil)
+                }, completion: nil)
         }
     }
 }
