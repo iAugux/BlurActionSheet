@@ -10,9 +10,9 @@ import UIKit
 
 class BlurActionSheetCell: UITableViewCell {
 
-    private let underLineColor = UIColor(white: 0.5, alpha: 0.7)
+    private let underLineColor = UIColor.grayColor()
     
-    var underLineView:UIView!
+    var underLineView: UIView!
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -37,19 +37,16 @@ class BlurActionSheetCell: UITableViewCell {
 
     override func layoutSubviews() {
         super.layoutSubviews()
-        let width = self.bounds.size.width
-        let margin:CGFloat = 20
+        let width               = bounds.size.width
+        let margin: CGFloat     = 8.0
+        let lineHeight: CGFloat = 0.5
         
-        if (underLineView.frame.size.height != 1){
-            underLineView.frame = CGRectMake(margin, 0, width - margin * 2, 1)
-        }
-        
-        
+        underLineView.frame = CGRectMake(margin, 0, width - margin * 2, lineHeight)
     }
     
     override func setSelected(selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-        if (selected) {
+        if selected {
             self.textLabel?.textColor = UIColor.lightGrayColor()
             underLineView.backgroundColor = underLineColor
         }
@@ -57,7 +54,7 @@ class BlurActionSheetCell: UITableViewCell {
     
     override func setHighlighted(highlighted: Bool, animated: Bool) {
         super.setHighlighted(highlighted, animated: animated)
-        if (highlighted){
+        if highlighted {
             self.textLabel?.textColor = UIColor.lightGrayColor()
             underLineView.backgroundColor = underLineColor
         }

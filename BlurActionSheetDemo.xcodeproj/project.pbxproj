@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B120908F1C6BB54300997E0A /* BlurBackgroundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B120908E1C6BB54300997E0A /* BlurBackgroundView.swift */; };
 		D8B4DC761AE961D600EEB9C2 /* photo.png in Resources */ = {isa = PBXBuildFile; fileRef = D8B4DC751AE961D600EEB9C2 /* photo.png */; };
 		D8BBA4EB1AE91B690008A9E8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8BBA4EA1AE91B690008A9E8 /* AppDelegate.swift */; };
 		D8BBA4ED1AE91B690008A9E8 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8BBA4EC1AE91B690008A9E8 /* ViewController.swift */; };
@@ -29,6 +30,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		B120908E1C6BB54300997E0A /* BlurBackgroundView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BlurBackgroundView.swift; sourceTree = "<group>"; };
 		D8B4DC751AE961D600EEB9C2 /* photo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = photo.png; sourceTree = "<group>"; };
 		D8BBA4E51AE91B690008A9E8 /* BlurActionSheetDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BlurActionSheetDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D8BBA4E91AE91B690008A9E8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -125,6 +127,7 @@
 			children = (
 				D8BBA51C1AE91DDB0008A9E8 /* BlurActionSheet.swift */,
 				D8BBA5201AE920980008A9E8 /* BlurActionSheetCell.swift */,
+				B120908E1C6BB54300997E0A /* BlurBackgroundView.swift */,
 			);
 			path = BlurActionSheet;
 			sourceTree = SOURCE_ROOT;
@@ -233,6 +236,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D8BBA5211AE920980008A9E8 /* BlurActionSheetCell.swift in Sources */,
+				B120908F1C6BB54300997E0A /* BlurBackgroundView.swift in Sources */,
 				D8BBA51D1AE91DDB0008A9E8 /* BlurActionSheet.swift in Sources */,
 				D8BBA4ED1AE91B690008A9E8 /* ViewController.swift in Sources */,
 				D8BBA4EB1AE91B690008A9E8 /* AppDelegate.swift in Sources */,

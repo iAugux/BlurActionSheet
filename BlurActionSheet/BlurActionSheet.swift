@@ -10,33 +10,30 @@ import UIKit
 
 class BlurActionSheet: UIView, UITableViewDataSource {
 
-    private let actionSheetCellHeight:CGFloat = 44.0
+    private let actionSheetCellHeight: CGFloat = 44.0
+    private let actionSheetCancelHeight: CGFloat = 58.0
     
-    private var showSet:NSMutableSet = NSMutableSet()
-    private var titles:[String]?
-    private var containerView:UIView?
-    private var handler:((index:Int) -> Void)?
+    private var showSet: NSMutableSet = NSMutableSet()
+    private var titles: [String]?
+    private var containerView: UIView?
+    private var handler: ((index:Int) -> Void)?
     
-    private var tableView:UITableView!
-    private var backView:UIView!
+    private var tableView: UITableView!
+    private var blurBackgroundView: BlurBackgroundView!
     
     override init(frame: CGRect) {
         super.init(frame: frame)
         
-        backView = UIView()
-        backView.backgroundColor = UIColor(white: 0.7, alpha: 0)
-        addSubview(backView)
+        blurBackgroundView = BlurBackgroundView()
+        addSubview(blurBackgroundView)
         
-        let blurView = UIVisualEffectView(effect: UIBlurEffect(style: .Dark))
-        blurView.frame = UIScreen.mainScreen().bounds
-        backView.addSubview(blurView)
-        
-        tableView = UITableView()
-        tableView.delegate = self
-        tableView.dataSource = self
-        tableView.backgroundView = nil
+        tableView                 = UITableView()
+        tableView.delegate        = self
+        tableView.dataSource      = self
+        tableView.backgroundView  = nil
+        tableView.scrollEnabled   = false
         tableView.backgroundColor = UIColor.clearColor()
-        tableView.separatorStyle = .None
+        tableView.separatorStyle  = .None
         tableView.tableFooterView = UIView()
         addSubview(tableView)
     }
@@ -45,12 +42,28 @@ class BlurActionSheet: UIView, UITableViewDataSource {
         fatalError("init(coder:) has not been implemented")
     }
 
+    override func layoutSubviews() {
+        super.layoutSubviews()
+
+        let maxHeight = actionSheetCellHeight * CGFloat(titles!.count - 1) + actionSheetCancelHeight
+        
+        // TODO: - maxHeight shouldn't be greater than screen's height.
+        
+        var frame = UIScreen.mainScreen().bounds
+        frame.size.height = maxHeight
+        frame.origin.y = UIScreen.mainScreen().bounds.height - frame.size.height
+        
+        tableView.frame = frame
+
+    }
     
-    class func showWithTitles(titles:[String], handler: ((index:Int) -> Void)){
+    
+    
+    class func showWithTitles(titles: [String], handler: ((index:Int) -> Void)){
         showWithTitles(titles, view: nil, handler: handler)
     }
     
-    class func showWithTitles(titles:[String], view:UIView?, handler: ((index:Int) -> Void)){
+    class func showWithTitles(titles: [String], view: UIView?, handler: ((index:Int) -> Void)){
         let actionSheet = BlurActionSheet(frame: UIScreen.mainScreen().bounds)
         actionSheet.titles = titles
         actionSheet.containerView = view
@@ -58,90 +71,69 @@ class BlurActionSheet: UIView, UITableViewDataSource {
         actionSheet.show()
     }
     
-    
-    private func show(){
+    private func show() {
         
-        if (containerView != nil){
+        if (containerView != nil) {
             containerView!.addSubview(self)
-        }else{
+        } else {
             UIApplication.sharedApplication().keyWindow?.addSubview(self)
         }
         
-        backView.alpha = 0
+        blurBackgroundView.alpha = 0
         UIView.animateWithDuration(1.0, animations: { () -> Void in
-            self.backView.alpha = 1
+            self.blurBackgroundView.alpha = 1
         })
     }
     
-    
-    private func hide(){
+    private func hide() {
         
         var index = 0
-        let count:CGFloat = CGFloat(tableView.visibleCells.count)
-        let minOffset = self.frame.size.width * 0.4 / count
-        let cellWidth = self.frame.size.width
-        for visibleCell in tableView.visibleCells{
+        
+        for visibleCell in tableView.visibleCells {
             if let cell = visibleCell as? BlurActionSheetCell {
                 index = index + 1
-                let underLineWidth: CGFloat = (count - CGFloat(index)) * minOffset
                 let height = tableView.frame.size.height
-                
-                UIView.animateWithDuration(0.5, delay: 0.0, options: UIViewAnimationOptions.CurveEaseOut, animations: { () -> Void in
-                    cell.underLineView.frame = CGRectMake((cellWidth-underLineWidth)/2, 0, underLineWidth, 1)
-                }, completion: nil)
 
-                UIView.animateWithDuration(0.5, delay: 0.2, options: UIViewAnimationOptions.CurveEaseOut, animations: { () -> Void in
-                    cell.layer.transform = CATransform3DTranslate(cell.layer.transform, 0, height*2, 0)
-                }, completion: { (Bool) -> Void in
-                    self.removeFromSuperview()
+                UIView.animateWithDuration(0.45, delay: 0.2, options: .CurveEaseOut, animations: { () -> Void in
+                    cell.textLabel?.textColor = UIColor(red: 0.7725, green: 0.1308, blue: 0.13, alpha: 0.0)
+                    cell.underLineView?.alpha = 0
+                    
+                    cell.layer.transform = CATransform3DTranslate(cell.layer.transform, 0, height * 2, 0)
+                    }, completion: { (Bool) -> Void in
+                        self.removeFromSuperview()
                 })
             }
         }
         
         UIView.animateWithDuration(0.6, animations: { () -> Void in
-           self.backView.alpha = 0.0
+           self.blurBackgroundView.alpha = 0.0
         });
-        
     }
     
     override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
         hide()
     }
     
-    override func layoutSubviews() {
-        super.layoutSubviews()
-        
-        var maxHeight = actionSheetCellHeight * CGFloat(titles!.count)
-        if (maxHeight > self.frame.size.height * 0.7){
-            maxHeight = self.frame.size.height * 0.7
-        }
-        
-        var frame = self.bounds;
-        frame.size.height = maxHeight
-        frame.origin.y = self.bounds.size.height - frame.size.height
-        
-        backView.frame = self.bounds
-        tableView.frame = frame
-    }
-    
-    // tableView dataSource and delegate
-    
+    // MARK: - tableView dataSource and delegate
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if (titles != nil){
+        if (titles != nil) {
             return titles!.count
-        }else{
+        } else {
             return 0
         }
     }
     
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+        if let titles = titles {
+            return indexPath.row == titles.count - 1 ? actionSheetCancelHeight : actionSheetCellHeight
+        }
         return actionSheetCellHeight
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
         let cellIdentifier:String = "actionSheetCell"
-        var cell:BlurActionSheetCell? = tableView.dequeueReusableCellWithIdentifier(cellIdentifier) as? BlurActionSheetCell
+        var cell = tableView.dequeueReusableCellWithIdentifier(cellIdentifier) as? BlurActionSheetCell
         if (cell == nil) {
             cell = BlurActionSheetCell(style: .Default, reuseIdentifier: cellIdentifier)
         }
@@ -159,7 +151,7 @@ class BlurActionSheet: UIView, UITableViewDataSource {
     
 }
 
-extension BlurActionSheet: UITableViewDelegate{
+extension BlurActionSheet: UITableViewDelegate {
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         tableView.deselectRowAtIndexPath(indexPath, animated: true)
@@ -170,7 +162,7 @@ extension BlurActionSheet: UITableViewDelegate{
     
     func tableView(tableView: UITableView, willDisplayCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath) {
         
-        if (!showSet.containsObject(indexPath)){
+        if (!showSet.containsObject(indexPath)) {
             showSet.addObject(indexPath)
             
             let delayTime: NSTimeInterval! = 0.3 + sqrt(Double(indexPath.row)) * 0.09
