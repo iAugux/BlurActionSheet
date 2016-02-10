@@ -94,9 +94,10 @@ class BlurActionSheet: UIView, UITableViewDataSource {
                 index = index + 1
                 let height = tableView.frame.size.height
 
+                cell.underLineView?.alpha = 0.5
+                cell.textLabel?.alpha = 0.5
+                
                 UIView.animateWithDuration(0.45, delay: 0.2, options: .CurveEaseOut, animations: { () -> Void in
-                    cell.textLabel?.textColor = UIColor(red: 0.7725, green: 0.1308, blue: 0.13, alpha: 0.0)
-                    cell.underLineView?.alpha = 0
                     
                     cell.layer.transform = CATransform3DTranslate(cell.layer.transform, 0, height * 2, 0)
                     }, completion: { (Bool) -> Void in
