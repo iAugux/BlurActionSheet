@@ -9,14 +9,14 @@
 import UIKit
 
 class BlurActionSheet: UIView, UITableViewDataSource {
-
+    
     private let actionSheetCellHeight: CGFloat = 44.0
     private let actionSheetCancelHeight: CGFloat = 58.0
     
     private var showSet: NSMutableSet = NSMutableSet()
     private var titles: [String]?
     private var containerView: UIView?
-    private var handler: ((index:Int) -> Void)?
+    private var handler: ((index: Int) -> Void)?
     
     private var tableView: UITableView!
     private var blurBackgroundView: BlurBackgroundView!
@@ -37,14 +37,14 @@ class BlurActionSheet: UIView, UITableViewDataSource {
         tableView.tableFooterView = UIView()
         addSubview(tableView)
     }
-
+    
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-
+    
     override func layoutSubviews() {
         super.layoutSubviews()
-
+        
         let maxHeight = actionSheetCellHeight * CGFloat(titles!.count - 1) + actionSheetCancelHeight
         
         // TODO: - maxHeight shouldn't be greater than screen's height.
@@ -54,16 +54,13 @@ class BlurActionSheet: UIView, UITableViewDataSource {
         frame.origin.y = UIScreen.mainScreen().bounds.height - frame.size.height
         
         tableView.frame = frame
-
     }
     
-    
-    
-    class func showWithTitles(titles: [String], handler: ((index:Int) -> Void)){
+    class func showWithTitles(titles: [String], handler: ((index: Int) -> Void)) {
         showWithTitles(titles, view: nil, handler: handler)
     }
     
-    class func showWithTitles(titles: [String], view: UIView?, handler: ((index:Int) -> Void)){
+    class func showWithTitles(titles: [String], view: UIView?, handler: ((index: Int) -> Void)) {
         let actionSheet = BlurActionSheet(frame: UIScreen.mainScreen().bounds)
         actionSheet.titles = titles
         actionSheet.containerView = view
@@ -93,12 +90,11 @@ class BlurActionSheet: UIView, UITableViewDataSource {
             if let cell = visibleCell as? BlurActionSheetCell {
                 index = index + 1
                 let height = tableView.frame.size.height
-
+                
                 cell.underLineView?.alpha = 0.5
                 cell.textLabel?.alpha = 0.5
                 
                 UIView.animateWithDuration(0.45, delay: 0.2, options: .CurveEaseOut, animations: { () -> Void in
-                    
                     cell.layer.transform = CATransform3DTranslate(cell.layer.transform, 0, height * 2, 0)
                     }, completion: { (Bool) -> Void in
                         self.removeFromSuperview()
@@ -107,12 +103,15 @@ class BlurActionSheet: UIView, UITableViewDataSource {
         }
         
         UIView.animateWithDuration(0.6, animations: { () -> Void in
-           self.blurBackgroundView.alpha = 0.0
-        });
+            self.blurBackgroundView.alpha = 0.0
+        })
     }
     
     override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
         hide()
+        if let handler = handler {
+            handler(index: 0)
+        }
     }
     
     // MARK: - tableView dataSource and delegate
@@ -133,7 +132,7 @@ class BlurActionSheet: UIView, UITableViewDataSource {
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
-        let cellIdentifier:String = "actionSheetCell"
+        let cellIdentifier = "actionSheetCell"
         var cell = tableView.dequeueReusableCellWithIdentifier(cellIdentifier) as? BlurActionSheetCell
         if (cell == nil) {
             cell = BlurActionSheetCell(style: .Default, reuseIdentifier: cellIdentifier)
@@ -158,7 +157,9 @@ extension BlurActionSheet: UITableViewDelegate {
         tableView.deselectRowAtIndexPath(indexPath, animated: true)
         
         hide()
-        handler!(index: indexPath.row)
+        if let handler = handler {
+            handler(index: indexPath.row)
+        }
     }
     
     func tableView(tableView: UITableView, willDisplayCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath) {
