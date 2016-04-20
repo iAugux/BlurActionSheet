@@ -1,8 +1,9 @@
 # BlurActionSheet
 Action sheet with blur effect written in Swift
 
-![image](https://github.com/nathanwhy/BlurActionSheet/raw/master/example.gif)
-
+<div>
+<img src="https://raw.githubusercontent.com/iAugux/ProjectScreenshots/master/BlurActionSheet/1.gif" width="272" height=480"/>
+</div>
 
 ###Requirements
 
