@@ -10,16 +10,21 @@ import UIKit
 
 class ViewController: UIViewController {
 
+    @IBOutlet weak var label: UILabel! {
+        didSet {
+            label.text = nil
+        }
+    }
     
-    @IBAction func buttonClick(sender: AnyObject) {
+    override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
         
         let titles = ["commit","reload image","save image","copy image","share image","cancel"]
         
         BlurActionSheet.showWithTitles(titles, handler: { (index) -> Void in
             
-            print("selected at \(index)")
+            self.label.text = "\"" + titles[index] + "\"" + " selected"
+            
         })
-        
     }
     
 }

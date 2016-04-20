@@ -8,7 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		B120908F1C6BB54300997E0A /* BlurBackgroundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B120908E1C6BB54300997E0A /* BlurBackgroundView.swift */; };
-		D8B4DC761AE961D600EEB9C2 /* photo.png in Resources */ = {isa = PBXBuildFile; fileRef = D8B4DC751AE961D600EEB9C2 /* photo.png */; };
+		B17376FE1CC759FE00C27725 /* TopMostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B17376FD1CC759FE00C27725 /* TopMostViewController.swift */; };
+		BCCAAD490FF660DB0F95DA41 /* Pods_BlurActionSheetDemo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B5A33D1AEEC7E1D724C8CC2E /* Pods_BlurActionSheetDemo.framework */; };
 		D8BBA4EB1AE91B690008A9E8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8BBA4EA1AE91B690008A9E8 /* AppDelegate.swift */; };
 		D8BBA4ED1AE91B690008A9E8 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8BBA4EC1AE91B690008A9E8 /* ViewController.swift */; };
 		D8BBA4F01AE91B690008A9E8 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D8BBA4EE1AE91B690008A9E8 /* Main.storyboard */; };
@@ -30,8 +31,11 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		4E6AFAC84837AFC1A75F6D2C /* Pods-BlurActionSheetDemo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BlurActionSheetDemo.release.xcconfig"; path = "Pods/Target Support Files/Pods-BlurActionSheetDemo/Pods-BlurActionSheetDemo.release.xcconfig"; sourceTree = "<group>"; };
+		7FFB184D939FBAB1C53C04EB /* Pods-BlurActionSheetDemo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BlurActionSheetDemo.debug.xcconfig"; path = "Pods/Target Support Files/Pods-BlurActionSheetDemo/Pods-BlurActionSheetDemo.debug.xcconfig"; sourceTree = "<group>"; };
 		B120908E1C6BB54300997E0A /* BlurBackgroundView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BlurBackgroundView.swift; sourceTree = "<group>"; };
-		D8B4DC751AE961D600EEB9C2 /* photo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = photo.png; sourceTree = "<group>"; };
+		B17376FD1CC759FE00C27725 /* TopMostViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TopMostViewController.swift; sourceTree = "<group>"; };
+		B5A33D1AEEC7E1D724C8CC2E /* Pods_BlurActionSheetDemo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BlurActionSheetDemo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D8BBA4E51AE91B690008A9E8 /* BlurActionSheetDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BlurActionSheetDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D8BBA4E91AE91B690008A9E8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D8BBA4EA1AE91B690008A9E8 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -51,6 +55,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BCCAAD490FF660DB0F95DA41 /* Pods_BlurActionSheetDemo.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -64,12 +69,31 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		6CDBFDA6C11E32F820B54BCB /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				7FFB184D939FBAB1C53C04EB /* Pods-BlurActionSheetDemo.debug.xcconfig */,
+				4E6AFAC84837AFC1A75F6D2C /* Pods-BlurActionSheetDemo.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		9ACE71C5B7E2B398D21FE75E /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				B5A33D1AEEC7E1D724C8CC2E /* Pods_BlurActionSheetDemo.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		D8BBA4DC1AE91B690008A9E8 = {
 			isa = PBXGroup;
 			children = (
 				D8BBA4E71AE91B690008A9E8 /* BlurActionSheetDemo */,
 				D8BBA4FD1AE91B690008A9E8 /* BlurActionSheetDemoTests */,
 				D8BBA4E61AE91B690008A9E8 /* Products */,
+				6CDBFDA6C11E32F820B54BCB /* Pods */,
+				9ACE71C5B7E2B398D21FE75E /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -88,10 +112,10 @@
 				D8BBA51B1AE91BE60008A9E8 /* BlurActionSheet */,
 				D8BBA4EA1AE91B690008A9E8 /* AppDelegate.swift */,
 				D8BBA4EC1AE91B690008A9E8 /* ViewController.swift */,
+				B17376FD1CC759FE00C27725 /* TopMostViewController.swift */,
 				D8BBA4EE1AE91B690008A9E8 /* Main.storyboard */,
 				D8BBA4F11AE91B690008A9E8 /* Images.xcassets */,
 				D8BBA4F31AE91B690008A9E8 /* LaunchScreen.xib */,
-				D8B4DC751AE961D600EEB9C2 /* photo.png */,
 				D8BBA4E81AE91B690008A9E8 /* Supporting Files */,
 			);
 			path = BlurActionSheetDemo;
@@ -139,9 +163,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = D8BBA5041AE91B690008A9E8 /* Build configuration list for PBXNativeTarget "BlurActionSheetDemo" */;
 			buildPhases = (
+				119853260761F679692A1EA4 /* Check Pods Manifest.lock */,
 				D8BBA4E11AE91B690008A9E8 /* Sources */,
 				D8BBA4E21AE91B690008A9E8 /* Frameworks */,
 				D8BBA4E31AE91B690008A9E8 /* Resources */,
+				A7856A2DC59F2D0C676D3711 /* Embed Pods Frameworks */,
+				2C35F64E0A44C01BD223737E /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -216,7 +243,6 @@
 			files = (
 				D8BBA4F01AE91B690008A9E8 /* Main.storyboard in Resources */,
 				D8BBA4F51AE91B690008A9E8 /* LaunchScreen.xib in Resources */,
-				D8B4DC761AE961D600EEB9C2 /* photo.png in Resources */,
 				D8BBA4F21AE91B690008A9E8 /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -230,12 +256,61 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		119853260761F679692A1EA4 /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		2C35F64E0A44C01BD223737E /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-BlurActionSheetDemo/Pods-BlurActionSheetDemo-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		A7856A2DC59F2D0C676D3711 /* Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-BlurActionSheetDemo/Pods-BlurActionSheetDemo-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		D8BBA4E11AE91B690008A9E8 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				D8BBA5211AE920980008A9E8 /* BlurActionSheetCell.swift in Sources */,
+				B17376FE1CC759FE00C27725 /* TopMostViewController.swift in Sources */,
 				B120908F1C6BB54300997E0A /* BlurBackgroundView.swift in Sources */,
 				D8BBA51D1AE91DDB0008A9E8 /* BlurActionSheet.swift in Sources */,
 				D8BBA4ED1AE91B690008A9E8 /* ViewController.swift in Sources */,
@@ -360,6 +435,7 @@
 		};
 		D8BBA5051AE91B690008A9E8 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 7FFB184D939FBAB1C53C04EB /* Pods-BlurActionSheetDemo.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = BlurActionSheetDemo/Info.plist;
@@ -370,6 +446,7 @@
 		};
 		D8BBA5061AE91B690008A9E8 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 4E6AFAC84837AFC1A75F6D2C /* Pods-BlurActionSheetDemo.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = BlurActionSheetDemo/Info.plist;

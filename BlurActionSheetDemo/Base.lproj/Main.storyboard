@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9532" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="vXZ-lx-hvc">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="vXZ-lx-hvc">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9530"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
     </dependencies>
     <scenes>
         <!--View Controller-->
@@ -17,43 +17,36 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JAo-FO-aUx">
-                                <rect key="frame" x="277" y="48" width="46" height="30"/>
-                                <state key="normal" title="Button">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="buttonClick:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="htq-zD-Gcr"/>
-                                </connections>
-                            </button>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="photo.png" translatesAutoresizingMaskIntoConstraints="NO" id="qgT-zQ-fxi">
-                                <rect key="frame" x="100" y="158" width="400" height="400"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="400" id="B6j-fo-fNz"/>
-                                    <constraint firstAttribute="height" constant="400" id="Ta9-cl-deB"/>
-                                </constraints>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="beauty" translatesAutoresizingMaskIntoConstraints="NO" id="Rfd-K8-hDD">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                             </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="b36-IQ-0IR">
+                                <rect key="frame" x="279" y="28" width="42" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstAttribute="centerX" secondItem="JAo-FO-aUx" secondAttribute="centerX" id="1H1-E6-zcI"/>
-                            <constraint firstItem="JAo-FO-aUx" firstAttribute="top" secondItem="jyV-Pf-zRb" secondAttribute="bottom" constant="28" id="8Qx-j3-Vnr"/>
-                            <constraint firstItem="qgT-zQ-fxi" firstAttribute="top" secondItem="JAo-FO-aUx" secondAttribute="bottom" constant="80" id="MCl-kg-YRn"/>
-                            <constraint firstAttribute="centerX" secondItem="qgT-zQ-fxi" secondAttribute="centerX" id="tOC-ZT-af1"/>
-                            <constraint firstItem="2fi-mo-0CV" firstAttribute="top" secondItem="qgT-zQ-fxi" secondAttribute="bottom" constant="80" id="wvS-IT-5te"/>
+                            <constraint firstItem="Rfd-K8-hDD" firstAttribute="top" secondItem="kh9-bI-dsS" secondAttribute="top" id="4lI-gJ-8Bv"/>
+                            <constraint firstAttribute="trailing" secondItem="Rfd-K8-hDD" secondAttribute="trailing" id="88O-FO-120"/>
+                            <constraint firstItem="b36-IQ-0IR" firstAttribute="top" secondItem="jyV-Pf-zRb" secondAttribute="bottom" constant="8" id="GKH-Pu-LY4"/>
+                            <constraint firstItem="Rfd-K8-hDD" firstAttribute="bottom" secondItem="2fi-mo-0CV" secondAttribute="top" id="Kgf-tu-pGA"/>
+                            <constraint firstItem="Rfd-K8-hDD" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leading" id="UGi-Pd-eJN"/>
+                            <constraint firstItem="b36-IQ-0IR" firstAttribute="centerX" secondItem="kh9-bI-dsS" secondAttribute="centerX" id="ru8-Bj-p0q"/>
                         </constraints>
-                        <variation key="default">
-                            <mask key="constraints">
-                                <exclude reference="wvS-IT-5te"/>
-                            </mask>
-                        </variation>
                     </view>
+                    <connections>
+                        <outlet property="label" destination="b36-IQ-0IR" id="fTh-HE-vCQ"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="255" y="254"/>
         </scene>
     </scenes>
     <resources>
-        <image name="photo.png" width="892" height="884"/>
+        <image name="beauty" width="1650" height="2712"/>
     </resources>
 </document>
